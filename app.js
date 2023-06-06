@@ -1,7 +1,27 @@
-console.log("sup from the app.js");
+const students = [
+  "Aleksandr",
+  "Bryan",
+  "Daniyal",
+  "David",
+  "Gabrielle",
+  "Joseph",
+  "Joshua",
+  "Justin",
+  "Mamadou",
+  "Nic",
+  "Veronica",
+  "Wilson",
+  "Connor",
+  "Mark",
+  "Kam",
+  "Anish",
+];
 
-if ($ !== undefined) {
-  console.log("jQuery linked");
-} else {
-  console.log("oh no");
-}
+$(() => {
+  // Loop that prints list of students to the DOM
+  for (let i = 0; i < students.length; i++) {
+    console.log(students[i]);
+    const $studentLi = $(`<li>`).text(students[i]);
+    $("#studentList").append($studentLi);
+  }
+});
