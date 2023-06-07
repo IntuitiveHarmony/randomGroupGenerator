@@ -19,9 +19,9 @@ let students = [
 
 $(() => {
   // Generate Groups
+  let randomStudents = [];
   const handleGenerateGroups = () => {
     // Randomize the students array
-    let randomStudents = [];
     // loop through the students
     for (let i = students.length; i > 0; i--) {
       // generate a random number to use as index
@@ -32,7 +32,7 @@ $(() => {
       students.splice(randomIndex, 1);
     }
     // reasign the student array so we can do it again!
-    students = randomStudents;
+    students = [...randomStudents];
     console.log(students);
     console.log(randomStudents);
 
@@ -61,6 +61,9 @@ $(() => {
         $groupUl.append($li);
       }
     }
+    students = randomStudents;
+    console.log(students);
+    console.log(randomStudents);
   };
 
   // Loop that prints list of students to the DOM
