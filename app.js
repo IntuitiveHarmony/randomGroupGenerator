@@ -34,6 +34,21 @@ $(() => {
     // reasign the student array so we can do it again!
     students = randomStudents;
     console.log(students);
+
+    // Grab group size from user input
+    let groupSize = parseInt($("#groupSize").val());
+    // remove any existing containers (previous random groups)
+    $(".groupsContainer").remove();
+    // create new container
+    const $groupsContainer = $("<div>").addClass("groupsContainer");
+    $(".flexContainer").append($groupsContainer);
+
+    for (let i = 0; i < students.length / groupSize; i++) {
+      const $group = $("<div>").addClass("group");
+      const $groupHeader = $(`<h3>`).text(`Group ${i + 1}`);
+      $group.append($groupHeader);
+      $groupsContainer.append($group);
+    }
   };
 
   // Loop that prints list of students to the DOM
