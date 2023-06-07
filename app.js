@@ -34,6 +34,7 @@ $(() => {
     // reasign the student array so we can do it again!
     students = randomStudents;
     console.log(students);
+    console.log(randomStudents);
 
     // Grab group size from user input
     let groupSize = parseInt($("#groupSize").val());
@@ -43,11 +44,22 @@ $(() => {
     const $groupsContainer = $("<div>").addClass("groupsContainer");
     $(".flexContainer").append($groupsContainer);
 
-    for (let i = 0; i < students.length / groupSize; i++) {
+    // declare variable for stable loop
+    let groupNumber = students.length / groupSize;
+
+    // Loop that makes cards for each group
+    for (let i = 0; i < groupNumber; i++) {
       const $group = $("<div>").addClass("group");
       const $groupHeader = $(`<h3>`).text(`Group ${i + 1}`);
+      const $groupUl = $(`<ul>`);
+      const groupArray = students.splice(0, groupSize);
       $group.append($groupHeader);
+      $group.append($groupUl);
       $groupsContainer.append($group);
+      for (let i = 0; i < groupArray.length; i++) {
+        const $li = $("<li>").text(groupArray[i]);
+        $groupUl.append($li);
+      }
     }
   };
 
